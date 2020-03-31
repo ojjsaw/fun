@@ -1,2 +1,0 @@
-# fun
-Created with CodeSandbox
