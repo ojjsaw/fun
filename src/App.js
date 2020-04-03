@@ -1,42 +1,44 @@
 import React from "react";
 import "./styles.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import ML5jsPlayground from "./ml5js/playground";
 
 export default function App() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <Router>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="home">OJAS</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="ml5js">ml5js</Nav.Link>
+          <Nav.Link href="#pricing">Coming Soon</Nav.Link>
+          <Nav.Link>
+            <div onClick={() => setModalShow(true)}>About</div>
+          </Nav.Link>
+
+          <AboutFun show={modalShow} onHide={() => setModalShow(false)} />
+        </Nav>
+      </Navbar>
       <Container>
-        <Row>
-          <Col>
-            <ButtonToolbar aria-label="Toolbar with button groups">
-              <ButtonGroup className="mr-2" aria-label="First group">
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                  About
-                </Button>
-                <AboutFun show={modalShow} onHide={() => setModalShow(false)} />
-              </ButtonGroup>
-              <ButtonGroup className="mr-2" aria-label="Second group">
-                <Button>ml5js</Button>
-                <Button>Coming Soon</Button>
-                <Button>Coming Soon</Button>
-              </ButtonGroup>
-            </ButtonToolbar>
-          </Col>
-        </Row>
         <Row>
           <Col>1 of 2</Col>
           <Col>2 of 2</Col>
         </Row>
+        <Switch>
+          <Route path="/">Hello</Route>
+          <Route path="/ml5js">
+            <ML5jsPlayground />
+          </Route>
+        </Switch>
       </Container>
     </Router>
   );
@@ -67,28 +69,28 @@ function AboutFun(props) {
         </p>
         <Container>
           <Row>
-            <Col align="right" sm={3}>
-              <Button variant="secondary">react-router-dom</Button>{" "}
+            <Col align="right" sm={5}>
+              <Button variant="secondary">react router dom</Button>{" "}
             </Col>
-            <Col sm={9}>routing multiple pages in a single react webapp</Col>
+            <Col sm={7}>routing multiple pages in a single react webapp</Col>
           </Row>
           <Row>
-            <Col align="right" sm={3}>
-              <Button variant="dark">react-bootstrap</Button>
+            <Col align="right" sm={5}>
+              <Button variant="dark">react bootstrap</Button>
             </Col>
-            <Col sm={9}>responsive HTML, CSS, JS framework</Col>
+            <Col sm={7}>responsive HTML, CSS, JS framework</Col>
           </Row>
           <Row>
-            <Col align="right" sm={3}>
+            <Col align="right" sm={5}>
               <Button variant="info">codesandbox</Button>
             </Col>
-            <Col sm={9}>coding with live feedback in the browser</Col>
+            <Col sm={7}>coding with live feedback in the browser</Col>
           </Row>
           <Row>
-            <Col align="right" sm={3}>
+            <Col align="right" sm={5}>
               <Button variant="warning">gh-pages</Button>
             </Col>
-            <Col sm={9}>packaging git repo and hosting on github pages</Col>
+            <Col sm={7}>packaging git repo and hosting on github pages</Col>
           </Row>
         </Container>
       </Modal.Body>
