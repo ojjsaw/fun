@@ -2,7 +2,7 @@ import React from "react";
 
 function ML5jsPlayground() {
   return (
-    <div className="about">
+    <div className="ML5jsPlayground">
       <div class="container">
         <div class="row align-items-center my-5">
           <div class="col-lg-7">
